@@ -25,7 +25,7 @@ function Login(props) {
                         e.preventDefault();
                         axios.post(`${process.env.REACT_APP_API_URL}login`, { usernameOrEmail: usernameOrEmail, password: password })
                             .then(function (response) {
-                                // console.log(response);
+                                console.log(response.data);
                                 localStorage.setItem('token', response.data.token);
                                 localStorage.setItem('administrator', response.data.administrator);
                                 props.setToast("Logged In", "success")
@@ -37,6 +37,36 @@ function Login(props) {
                             })
                     }} id="login-form-submit-button" className="button">Submit</button>
                 </div>
+                <button type="submit" onClick={(e) => {
+                        e.preventDefault();
+                        axios.post(`${process.env.REACT_APP_API_URL}login`, { usernameOrEmail: "USER", password: "USER" })
+                            .then(function (response) {
+                                console.log(response.data);
+                                localStorage.setItem('token', response.data.token);
+                                localStorage.setItem('administrator', response.data.administrator);
+                                props.setToast("Logged In", "success")
+                                history.push("/");
+                            })
+                            .catch(function (error) {
+                                // console.log(error.response)
+                                setError(error.response.data.message)
+                            })
+                    }} className="test-login-button">Skip This and Continue as Test User &gt;</button>
+                                        <button type="submit" onClick={(e) => {
+                        e.preventDefault();
+                        axios.post(`${process.env.REACT_APP_API_URL}login`, { usernameOrEmail: "ADMIN", password: "ADMIN" })
+                            .then(function (response) {
+                                console.log(response.data);
+                                localStorage.setItem('token', response.data.token);
+                                localStorage.setItem('administrator', response.data.administrator);
+                                props.setToast("Logged In", "success")
+                                history.push("/");
+                            })
+                            .catch(function (error) {
+                                // console.log(error.response)
+                                setError(error.response.data.message)
+                            })
+                    }} className="test-login-button">Skip This and Continue as Test Admin &gt;</button>
             </form>
         </div>
     );

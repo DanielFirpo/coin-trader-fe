@@ -54,12 +54,12 @@ function Account(props) {
                                 status = "Delivered"
                             }
                             return (
-                                <Link id={index % 2 == 0 ? "" : "odd-table-row"} to={"/order?id=" + order.id} className="row-display orders-table-value-row">
+                                <div id={index % 2 == 0 ? "" : "odd-table-row"} className="row-display orders-table-value-row">
                                     <div className="full-width">{order.id}</div>
                                     <div className="full-width">${(order.total / 100).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</div>
                                     <div className="full-width">{status}</div>
                                     <div className="full-width">{order.date.substring(0, 10)}</div>
-                                </Link>
+                                </div>
                             )
                         })
                     }
@@ -96,8 +96,8 @@ function Account(props) {
                             props.setToast("Password Changed")
                         })
                         .catch(function (error) {
-                            console.log(error.response.data.message)
-                            setError(error.response.data.message)
+                            console.log(error?.response?.data?.message)
+                            setError(error?.response?.data?.message)
                         })
                     }
                 }}>Change Password</div>

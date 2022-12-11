@@ -11,7 +11,7 @@ function EditProduct(props) {
 
     const [error, setError] = useState("");
     const [name, setName] = useState(qs.parse(props.location.search, { ignoreQueryPrefix: true }).name);
-    const [image, setImage] = useState("");
+    const [image, setImage] = useState(qs.parse(props.location.search, { ignoreQueryPrefix: true }).front_image_name);
     const [year, setYear] = useState(qs.parse(props.location.search, { ignoreQueryPrefix: true }).year);
     const [price, setPrice] = useState(qs.parse(props.location.search, { ignoreQueryPrefix: true }).price/100);
     const [description, setDescription] = useState(qs.parse(props.location.search, { ignoreQueryPrefix: true }).description);
@@ -145,7 +145,7 @@ function EditProduct(props) {
                     e.preventDefault();
                     let formData = new FormData();
                     formData.append('id', qs.parse(props.location.search, { ignoreQueryPrefix: true }).id);
-                    formData.append('file', image);
+                    formData.append('front', imageBlob);
                     formData.append('name', name);
                     formData.append('year', year);
                     formData.append('price', price);
@@ -153,6 +153,7 @@ function EditProduct(props) {
                     formData.append('status', status);
                     formData.append('rating', rating);
                     formData.append('manufacturer', manufacturer);
+                    formData.append('front_image_name', image);
 
                     const config = {
                         headers: {

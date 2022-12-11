@@ -7,7 +7,7 @@ import closedarrow from "../../../images/closedarrow.svg"
 
 import axios from "axios"
 
-function Homepage(props) {
+function Homepage() {
 
     const [pageNumber, setPageNumber] = useState(0);
     const [availablePages, setAvailablePages] = useState(0);
@@ -50,7 +50,6 @@ function Homepage(props) {
         axios
             .get(process.env.REACT_APP_API_URL + "products/products?pageNumber=" + pageNumber)
             .then(function (response) {
-                console.log(response)
                 setProducts(response.data.data)
             })
             .catch(function (error) {
@@ -62,7 +61,6 @@ function Homepage(props) {
         axios
             .get(process.env.REACT_APP_API_URL + "products/search?pageNumber=" + pageNumber + "&filter=" + JSON.stringify(filter))
             .then(function (response) {
-                console.log(response)
                 setProducts(response.data.data)
             })
             .catch(function (error) {

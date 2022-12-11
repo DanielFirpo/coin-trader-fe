@@ -43,7 +43,6 @@ function StoreSettings(props) {
                     })
                 }} className="button" style={{display: "block", marginTop: "50px"}}>Update</button>
 
-                <p>If you want anything else on the site to be configurable here just ask me</p>
             </form>
         </div>
     );

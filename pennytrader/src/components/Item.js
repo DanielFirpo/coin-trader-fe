@@ -6,14 +6,19 @@ import addtocart from "../images/addtocart.svg"
 
 function Item(props) {
 
-    const [imageSelection, setImageSelection] = useState(props.item.front_image_name);
+    const [imageSelection, setImageSelection] = useState();
+
+    useEffect(() => {
+        console.log(imageSelection, "iamge");
+        setImageSelection(props.item.front_image_name);
+    }, [props.item.front_image_name])
 
     return (
         <div className="item-container">
             <div className="item">
-                <img className="item-image" src={imageSelection == "no-image.png" ? process.env.REACT_APP_API_URL + "images/products/no-image.png" : imageSelection} onClick={(e) => {
-                    if (props.item.image_name != "no-image.png") {
-                        props.setImage(imageSelection)
+                <img className="item-image" src={!imageSelection ? process.env.REACT_APP_API_URL + "images/products/no-image.png" : process.env.REACT_APP_API_URL + "images/products/" + imageSelection + ".png"} onClick={(e) => {
+                    if (imageSelection && imageSelection != "no-image") {
+                        props.setImage( process.env.REACT_APP_API_URL + "images/products/" + imageSelection + ".png")
                     }
                 }}></img>
                 <div style={{ display: "flex", justifyContent: "space-between" }}>

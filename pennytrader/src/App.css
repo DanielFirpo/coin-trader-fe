@@ -162,7 +162,7 @@ input[type=number] {
 }
 
 #paypal-button-container {
-  height: 100px;
+  height: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -796,8 +796,9 @@ input[type=number] {
 }
 
 #fullscreen-image {
-  width: auto;
-  height: 90vh;
+  width: 90vw;
+  height: auto;
+  max-width: 90vh;
 }
 
 #fullscreen-image-container {
@@ -1592,4 +1593,13 @@ input[type=number] {
   .navbar-open {
     animation: none;
   }
+}
+
+.test-login-button {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  margin-top: 10px;
+  margin-left: auto;
 }

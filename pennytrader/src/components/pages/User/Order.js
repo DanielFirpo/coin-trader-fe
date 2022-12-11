@@ -10,7 +10,7 @@ function Order(props) {
     const [status, setStatus] = useState(0);
 
     useEffect(() => {
-        axiosWithAuth().get(`${process.env.REACT_APP_API_URL}admin/order?id=${qs.parse(props.location.search, { ignoreQueryPrefix: true }).id}`)
+        axiosWithAuth().get(`${process.env.REACT_APP_API_URL}/order?id=${qs.parse(props.location.search, { ignoreQueryPrefix: true }).id}`)
             .then(res => {
                 console.log(res.data)
                 if (res.data.order.status === 0) {
