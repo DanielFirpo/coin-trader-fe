@@ -856,7 +856,8 @@ function Checkout(props) {
                         window.location.assign(text);
                       })
                       .catch(function (error) {
-                        console.log(JSON.stringify(error));
+                        console.log(error);
+                        props.setToast(error.response.data.error, "failure")
                       });
                   } else {
                     setAcceptedError(true);
